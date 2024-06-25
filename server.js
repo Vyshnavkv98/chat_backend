@@ -10,16 +10,18 @@ import { app, server } from "./socket/socket.js";
 import cookieParser from 'cookie-parser'
 configDotenv()
 
-const corsOptions = {
-    origin: '*',
-    methods: ['GET,HEAD,PUT,PATCH,POST,DELETE'], 
-    credentials: true, 
-    optionsSuccessStatus: 204 
-};
+const allowedOrigins = ['https://chat-d3hgd16kr-vyshnav-kvs-projects.vercel.app'];
 
-app.use(cors(
-    corsOptions
-))
+app.use(cors({
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
 app.use(express.json())
 app.use(cookieParser())
 app.use(logger('dev'))
