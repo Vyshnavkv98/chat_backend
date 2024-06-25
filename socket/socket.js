@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
 	cors: {
-		origin: ["https://chat-steel-zeta.vercel.app"],
+		origin: ["https://chat-d3hgd16kr-vyshnav-kvs-projects.vercel.app"],
 		methods: ["GET", "POST","PUT","PATCH"],
 	},
 });
