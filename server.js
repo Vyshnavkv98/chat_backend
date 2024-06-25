@@ -11,8 +11,8 @@ import cookieParser from 'cookie-parser'
 configDotenv()
 
 const corsOptions = {
-    origin: 'https://chat-steel-zeta.vercel.app',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', 
+    origin: '*',
+    methods: ['GET,HEAD,PUT,PATCH,POST,DELETE'], 
     credentials: true, 
     optionsSuccessStatus: 204 
 };
