@@ -3,17 +3,28 @@ import User from "../models/usermodel.js";
 import { configDotenv } from "dotenv";
 configDotenv()
 
+const parseCookies = (cookieString) => {
+	const cookies = {};
+	cookieString.split(';').forEach(cookie => {
+	  const [name, ...rest] = cookie.split('=');
+	  cookies[name.trim()] = decodeURI(rest.join('='));
+	});
+	
+	return cookies.my_custom_jwt;
+  };
+
 const protectRoute = async (req, res, next) => {
 	try {
-		const token = req.cookies.my_custom_jwt;
-		console.log(req.cookies);
+		const token =parseCookies(req.headers.cookie);
+
+		console.log(token);
 
 		if (!token) {
 			return res.status(401).json({ error: "Unauthorized - No Token Provided" });
 		}
 
 		const decoded = jwt.verify(token, process.env.JWT_SECRET);
-		console.log(decoded);
+		// console.log(decoded);
 		if (!decoded) {
 			return res.status(401).json({ error: "Unauthorized - Invalid Token" });
 		}
