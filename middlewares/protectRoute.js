@@ -15,8 +15,8 @@ const parseCookies = (cookieString) => {
 
 const protectRoute = async (req, res, next) => {
 	try {
-		console.log(req.cookies,req.headers);
-		const token =parseCookies(req.headers.cookie);
+		const token = req.headers.authorization?.split(" ")[1];
+		console.log(token);
 
 
 		if (!token) {
