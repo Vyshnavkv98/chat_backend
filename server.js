@@ -13,7 +13,7 @@ configDotenv()
 const allowedOrigins = ['https://chat-d3hgd16kr-vyshnav-kvs-projects.vercel.app','http://localhost:5173','https://chat-backend-2aqv.onrender.com/'];
 
 app.use(cors({
-  origin: '*',
+  origin: allowedOrigins,
   credentials: true,
 }));
 app.use(express.json())
