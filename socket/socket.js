@@ -7,9 +7,12 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
 	cors: {
-		origin: ["https://chat-d3hgd16kr-vyshnav-kvs-projects.vercel.app"],
+		origin: ["https://chat-steel-zeta.vercel.app"],
 		methods: ["GET", "POST","PUT","PATCH"],
 	},
+	credentials: true,
+	methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+	allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization',
 });
 
 const userSocketMap = {}; // {userId: socketId}

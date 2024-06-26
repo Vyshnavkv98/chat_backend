@@ -14,7 +14,9 @@ const allowedOrigins = ['https://chat-d3hgd16kr-vyshnav-kvs-projects.vercel.app'
 
 app.use(cors({
   origin: allowedOrigins,
-  credentials: true,
+  credentials: true, // This allows cookies to be sent across origins
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+  allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization',
 }));
 app.use(express.json())
 app.use(cookieParser())
