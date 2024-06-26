@@ -10,7 +10,7 @@ import { app, server } from "./socket/socket.js";
 import cookieParser from 'cookie-parser'
 configDotenv()
 
-const allowedOrigins = ['https://chat-d3hgd16kr-vyshnav-kvs-projects.vercel.app','http://localhost:5173','https://chat-backend-2aqv.onrender.com/'];
+const allowedOrigins = ['https://chat-d3hgd16kr-vyshnav-kvs-projects.vercel.app','http://localhost:5173','https://chat-backend-2aqv.onrender.com','https://chat-steel-zeta.vercel.app'];
 
 app.use(cors({
   origin: allowedOrigins,
