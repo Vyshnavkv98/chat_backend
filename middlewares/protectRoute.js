@@ -15,9 +15,9 @@ const parseCookies = (cookieString) => {
 
 const protectRoute = async (req, res, next) => {
 	try {
+		console.log(req.cookies,req.headers);
 		const token =parseCookies(req.headers.cookie);
 
-		console.log(token);
 
 		if (!token) {
 			return res.status(401).json({ error: "Unauthorized - No Token Provided" });
